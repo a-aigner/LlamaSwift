@@ -10,6 +10,9 @@
 #include <string>
 #include <cstring>
 
+// Include build info before llama.cpp headers
+#include "ggml-build-info.h"
+
 // Include llama.cpp headers
 // Header search paths are configured in Package.swift
 #include "llama.h"

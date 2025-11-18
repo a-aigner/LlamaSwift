@@ -222,10 +222,10 @@ let package = Package(
                     "-DGGML_USE_CPU",  // Enable CPU backend (required for statically linked CPU backend)
                     "-DGGML_USE_METAL",  // Enable Metal for Apple Silicon GPU acceleration
                     "-DNDEBUG",  // Disable assertions in release mode (the NaN/Inf assertion is too strict for some models)
-                    // Define version info directly (normally set by CMake)
-                    // Use -D with proper string literal syntax for C preprocessor
-                    "-DGGML_VERSION=\\\"1.0.0\\\"",
-                    "-DGGML_COMMIT=\\\"unknown\\\"",
+                    // Define version info for ggml.c (which is compiled directly)
+                    // Note: These need to be string literals, so we use the format: -DNAME=\"value\"
+                    "-DGGML_VERSION=\"1.0.0\"",
+                    "-DGGML_COMMIT=\"unknown\"",
                     // Explicitly add include path via -I flag as well
                     "-Illama.cpp/include",
                     "-Illama.cpp",
