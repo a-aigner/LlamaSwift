@@ -223,8 +223,10 @@ let package = Package(
                     "-DGGML_USE_METAL",  // Enable Metal for Apple Silicon GPU acceleration
                     "-DNDEBUG",  // Disable assertions in release mode (the NaN/Inf assertion is too strict for some models)
                     // Define version info for ggml.c (which is compiled directly)
-                    // Using -include with full path relative to source directory
-                    "-include", "Sources/LlamaSwiftC/ggml-build-info.h",
+                    // Using -include to force include our build-info header before compilation
+                    // First add the current directory to include path, then include the header
+                    "-I.",  // Include current directory (Sources/LlamaSwiftC/)
+                    "-include", "ggml-build-info.h",
                     // Explicitly add include path via -I flag as well
                     "-Illama.cpp/include",
                     "-Illama.cpp",
