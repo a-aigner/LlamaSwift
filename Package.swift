@@ -223,9 +223,8 @@ let package = Package(
                     "-DGGML_USE_METAL",  // Enable Metal for Apple Silicon GPU acceleration
                     "-DNDEBUG",  // Disable assertions in release mode (the NaN/Inf assertion is too strict for some models)
                     // Define version info for ggml.c (which is compiled directly)
-                    // Note: These need to be string literals, so we use the format: -DNAME=\"value\"
-                    "-DGGML_VERSION=\"1.0.0\"",
-                    "-DGGML_COMMIT=\"unknown\"",
+                    // Using -include to force include our build-info header before any other includes
+                    "-include", "ggml-build-info.h",
                     // Explicitly add include path via -I flag as well
                     "-Illama.cpp/include",
                     "-Illama.cpp",
