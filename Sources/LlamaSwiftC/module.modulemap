@@ -1,0 +1,5 @@
+module LlamaSwiftC {
+    header "llama_bridge.h"
+    export *
+}
+
